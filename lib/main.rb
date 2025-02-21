@@ -9,7 +9,7 @@
 #refractor to classes
 
 class Board
-  def initialize(board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]])
+  def initialize(board = Array.new(3) {Array.new(3, " ")})
     @board = board
     
   end
@@ -36,19 +36,22 @@ class Board
     if @board[0][0] == player && @board[0][1] == player && @board[0][2] == player ||
       @board[1][0] == player && @board[1][1] == player && @board[1][2] == player ||
       @board[2][0] == player && @board[2][1] == player && @board[2][2] == player
+      puts "You Win!"
       return true
     end
   end
 end
 
+class Player
+  def initialize(player, symbol)
+    @player = player
+    @symbol = symbol
+  end
 
+end
 
 
 game = Board.new
+game.print_board
 
-#this working so far
-game.update_board("x", 0, 0)
-game.print_board
-game.update_board("x", 1, 0)
-game.print_board
 
