@@ -5,69 +5,50 @@
 #
 #
 #lets start with modules/functional
-#
-
-#prints board to CL
-def display_board()
-  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  puts " #{board[0]} | #{board[1]} | #{board[2]} " 
-  puts "-----------" 
-  puts " #{board[3]} | #{board[4]} | #{board[5]} " 
-  puts "-----------" 
-  puts " #{board[6]} | #{board[7]} | #{board[8]} " 
-
-end
-
-def player_move()
-  puts "Enter a number between 1-9 to make your move"
-  move = gets.chomp
-  index = move.to_i - 1
-  return index
-end
-
-def make_move(index)
-  board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  board[index] = "X"
-  return board
-end
-
-
 
 #refractor to classes
 
 class Board
-  def initialize(board = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
+  def initialize(board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]])
     @board = board
     
   end
 
   def print_board()
-    puts " #{@board[0]} | #{@board[1]} | #{@board[2]} " 
-    puts "-----------" 
-    puts " #{@board[3]} | #{@board[4]} | #{@board[5]} " 
-    puts "-----------" 
-    puts " #{@board[6]} | #{@board[7]} | #{@board[8]} " 
+    puts " #{@board[0]}"
+    puts " #{@board[1]}"
+    puts " #{@board[2]}"
   end
 
-  def board_update(player_move)
-    @board[player_move] = "X"
-    print_board
+  def update_board(player, x, y) #will be X or 0 for player, str input - x/y is coords for array
+    if valid_move?(x, y) #check if space is empty
+      @board[x][y] = player
+    end
+  end
+
+  def valid_move?(x, y)
+    @board[x][y] == " "
+
+  end
+
+  def winner?
+    #check board state for all rows + collumns - returns true if win conditions  met
+    if @board[0][0] == player && @board[0][1] == player && @board[0][2] == player ||
+      @board[1][0] == player && @board[1][1] == player && @board[1][2] == player ||
+      @board[2][0] == player && @board[2][1] == player && @board[2][2] == player
+      return true
+    end
   end
 end
 
-class Player
-  def initialize(playerX)
-    @playerX = playerX
-    
-  end
-
-  def player_move()
-    puts "Enter a number between 1-9 to make your move"
-    move = gets.chomp
-    index = move.to_i - 1
-    return index
-  end
-end
 
 
+
+game = Board.new
+
+#this working so far
+game.update_board("x", 0, 0)
+game.print_board
+game.update_board("x", 1, 0)
+game.print_board
 

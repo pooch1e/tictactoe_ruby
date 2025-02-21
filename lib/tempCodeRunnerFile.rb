@@ -1,1 +1,1 @@
-display_board()
+game.print_board
