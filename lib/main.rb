@@ -33,14 +33,27 @@ class Board
 
   def winner?
     #check board state for all rows + collumns - returns true if win conditions  met
-    if @board[0][0] == player && @board[0][1] == player && @board[0][2] == player ||
-      @board[1][0] == player && @board[1][1] == player && @board[1][2] == player ||
-      @board[2][0] == player && @board[2][1] == player && @board[2][2] == player
+    if @board[0][0] == "X" && @board[0][1] == "X" && @board[0][2] == "X" ||
+      @board[1][0] == "X" && @board[1][1] == "X" && @board[1][2] == "X" ||
+      @board[2][0] == "X" && @board[2][1] == "X" && @board[2][2] == "X"
       puts "You Win!"
       return true
     end
   end
+
+  #attempt to refracture this
+  def winner2? 
+    #check accross
+    @board.each do |i|
+      if i.all? {|j| j == "X"}
+        puts "you win"
+      else
+        puts "continue"
+      end
+    end
+  end
 end
+
 
 class Player
   def initialize() #x or o
@@ -68,11 +81,18 @@ end
 
 game = Board.new
 player1 = Player.new
-player1.who_is_playing?("x")
 
-player1.player_choice()
-update_board("x", input1, input2)
+#test game loop (working so far)
+# player1.who_is_playing?("x")
+# input1, input2 = player1.player_choice()
+# game.update_board("x", input1.to_i, input2.to_i)
+
+game.update_board("X", 0, 0) #symbol has to be upcase
+game.update_board("X", 0, 1)
+game.update_board("X", 0, 2)
+
 game.print_board
+game.winner2? #not working
 
 
 
