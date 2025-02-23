@@ -137,6 +137,11 @@ while new_game.instance_variable_get(:@turn) < 10 && !game.winner?
 
   input1, input2 = player1.player_choice
   game.update_board(symbol, input1.to_i, input2.to_i)
+  if symbol == "X"
+    player1.who_is_playing == "0"
+  else
+    return symbol
+  end
   game.print_board
 
   break if game.winner?
