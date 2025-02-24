@@ -97,21 +97,6 @@ class GamePlay
 end
 
 
-
-
-
-
-#test game loop (working so far)
-# player1.who_is_playing?("x")
-# input1, input2 = player1.player_choice()
-# game.update_board("x", input1.to_i, input2.to_i)
-
-# game.update_board("X", 0, 2) #symbol has to be upcase
-# game.update_board("X", 0, 1)
-# game.update_board("X", 2, 2)
-# game.update_board("X", 1, 1)
-# game.update_board("X", 2, 0)
-
 game = Board.new
 player1 = Player.new
 new_game = GamePlay.new
