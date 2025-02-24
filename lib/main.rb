@@ -1,13 +1,4 @@
-#attempt to refracture this
 
-#what is the model?
-#build board (view)
-#build controller (players/turns)
-#
-#
-#lets start with modules/functional
-
-#refractor to classes
 #Handle Game Board
 class Board
   def initialize(board = Array.new(3) {Array.new(3, " ")})
@@ -16,9 +7,12 @@ class Board
   end
 
   def print_board()
-    puts " #{@board[0]}"
-    puts " #{@board[1]}"
-    puts " #{@board[2]}"
+    puts "  0   1   2 "
+    puts "0 #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]} "
+    puts " ---+---+---"
+    puts "1 #{@board[1][0]} | #{@board[1][1]} | #{@board[1][2]} "
+    puts " ---+---+---"
+    puts "2 #{@board[2][0]} | #{@board[2][1]} | #{@board[2][2]} "
   end
 
   def update_board(player, x, y) #will be X or 0 for player, str input - x/y is coords for array
